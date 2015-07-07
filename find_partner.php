@@ -28,4 +28,6 @@ if(  isset($_GET["id"]) && isset($_GET["n"]) && isset($_GET["re"]) && isset($_GE
 
 	$stmt->close();
 	$conn->close();
+} else {
+	echo 'nothing to see here..';
 }
