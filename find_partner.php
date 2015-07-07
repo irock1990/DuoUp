@@ -21,7 +21,7 @@ if(  isset($_GET["id"]) && isset($_GET["n"]) && isset($_GET["re"]) && isset($_GE
 		$stmt = $conn->prepare("INSERT INTO user (summoner_id, summoner_name, rank, region, league, position) VALUES (?, ?, ?, ?, ?, ?)");
 		$stmt->bind_param("isisss",$_GET["id"], $_GET["n"], $_GET["ra"], $_GET["re"], $_GET["l"], $_GET["p"]);
 		$stmt->execute();		
-		echo "inserted " . $_GET["n"];
+		echo "inserted";
 	}
 
 	$stmt->close();
