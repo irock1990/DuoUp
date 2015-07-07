@@ -16,9 +16,7 @@ if(  isset($_GET["id"]) && isset($_GET["n"]) && isset($_GET["re"]) && isset($_GE
 	$result = $conn->query("SELECT * FROM user WHERE summoner_name = " . urldecode($_GET['n']));
 
 	if($result->num_rows > 0) { 
-		$row = $result->fetch_assoc();
-
-		echo $row["summoner_name"] . " " . $row["summoner_id"];
+		echo 'exists already';
 	} else {
 		$stmt = $conn->prepare("INSERT INTO user (summoner_id, summoner_name, rank, region, league, position) VALUES (?, ?, ?, ?, ?, ?)");
 		$stmt->bind_param("isisss",$_GET["id"], $_GET["n"], $_GET["ra"], $_GET["re"], $_GET["l"], $_GET["p"]);
