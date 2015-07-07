@@ -92,14 +92,15 @@ function htmlDecode(value){
 
 function findPartner(id, n, re, l, ra, p) {
 	$.ajax({
+		type: "GET",
 		url: "find_partner.php",
 		data: {
 			id: id,
-			name: n,
-			region: re,
-			league: l,
-			rank: ra,
-			position: p
+			n: n,
+			re: re,
+			l: l,
+			ra: ra,
+			p: p
 		},
 		success: function(data) {
 			console.log("success find_partner");
@@ -111,9 +112,7 @@ function findPartner(id, n, re, l, ra, p) {
 $("#search_button").click(function() {
 	var retval = false;
 	region = $("#region").val();
-	//name = $("#name").val().replace(/ /g,'');
 	name = $("#name").val();
-
 	name = htmlEncode(name);
 	region = htmlEncode(region);
 
@@ -127,8 +126,11 @@ $("#search_button").click(function() {
 				}
 			},
 			success: function(data) {
-				name = data.name;
-				id = data.id;
+				for(var a in data) {
+					name = data[a].name;
+					id = data[a].id;
+					break;
+				}
 
 				league = $("#league").val();
 				rank = $("#rank").val();
@@ -143,7 +145,6 @@ $("#search_button").click(function() {
 			}
 		});	
 	}
-
 	return false;
 });
 
