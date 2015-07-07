@@ -13,7 +13,7 @@ if(  isset($_GET["id"]) && isset($_GET["n"]) && isset($_GET["re"]) && isset($_GE
 
 	$conn = new mysqli($server, $username, $password, $db);
 
-	$result = $conn->query("SELECT * FROM user WHERE summoner_name = " . $_GET['n']);
+	$result = $conn->query("SELECT * FROM user WHERE summoner_name = " . $_GET['n']) or echo 'select query broken';
 
 	if($result->num_rows > 0) { 
 		$row = $result->fetch_assoc();
