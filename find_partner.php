@@ -14,15 +14,17 @@ if(  isset($_GET["id"]) && isset($_GET["n"]) && isset($_GET["re"]) && isset($_GE
 	if($result->num_rows > 0) { 
 		echo 'exists already';
 	} else {
-		$stmt = $conn->prepare("INSERT INTO user (summoner_id, summoner_name, rank, region, league, position) VALUES (?, ?, ?, ?, ?, ?)");
+/*		$stmt = $conn->prepare("INSERT INTO user (summoner_id, summoner_name, rank, region, league, position) VALUES (?, ?, ?, ?, ?, ?)");
 		$stmt->bind_param("isisss",$_GET["id"], $_GET["n"], $_GET["ra"], $_GET["re"], $_GET["l"], $_GET["p"]);
 		$stmt->execute();
-		$stmt->close();		
+		$stmt->close();		*/
 		echo "inserted";
 	}
 
 	
-	$conn->close();
+
 } else {
 	echo 'nothing to see here..';
 }
+
+$conn->close();
