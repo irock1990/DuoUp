@@ -1,17 +1,13 @@
 <?php
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+$server = $url["host"];
+$username = $url["user"];
+$password = $url["pass"];
+$db = substr($url["path"], 1);
 
-	$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-
-	$server = $url["host"];
-	$username = $url["user"];
-	$password = $url["pass"];
-	$db = substr($url["path"], 1);
+$conn = new mysqli($server, $username, $password, $db);
 
 if(  isset($_GET["id"]) && isset($_GET["n"]) && isset($_GET["re"]) && isset($_GET["ra"]) && isset($_GET["l"]) && isset($_GET["p"]) ) {
-
-
-
-	$conn = new mysqli($server, $username, $password, $db);
 
 	$result = $conn->query("SELECT * FROM user WHERE summoner_name = " . urldecode($_GET['n']));
 
